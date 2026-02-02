@@ -1,0 +1,158 @@
+/* ========================================
+   Global Theme (Light/Dark) — shared across pages
+   Usage:
+   - Load AFTER the page CSS
+   - theme.js sets <html data-theme="dark|light">
+   ======================================== */
+
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Default: keep Light as-is (pages already declare :root).
+   Dark: override design tokens. */
+html[data-theme="dark"] {
+  /* Colors */
+  --color-background: #0b1220;
+  --color-surface: #0f172a;
+  --color-border: rgba(148, 163, 184, 0.20);
+  --color-border-light: rgba(148, 163, 184, 0.12);
+
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* Primary */
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+
+  /* Channel Colors (tints + accents) */
+  --color-facebook: rgba(59, 130, 246, 0.16);
+  --color-facebook-dark: #60a5fa;
+  --color-facebook-header: rgba(59, 130, 246, 0.10);
+
+  --color-google: rgba(245, 158, 11, 0.18);
+  --color-google-dark: #fbbf24;
+  --color-google-header: rgba(245, 158, 11, 0.10);
+
+  --color-organic: rgba(168, 85, 247, 0.18);
+  --color-organic-dark: #c084fc;
+  --color-organic-header: rgba(168, 85, 247, 0.10);
+
+  --color-summary: rgba(34, 197, 94, 0.16);
+  --color-summary-dark: #34d399;
+  --color-summary-header: rgba(34, 197, 94, 0.10);
+
+  /* Status Colors */
+  --color-success: rgba(34, 197, 94, 0.18);
+  --color-success-dark: #34d399;
+  --color-warning: #fb7185;
+  /* usado em alguns lugares como destaque */
+  --color-error: rgba(239, 68, 68, 0.18);
+  --color-error-dark: #f87171;
+
+  /* Money Status */
+  --color-all: rgba(148, 163, 184, 0.12);
+  --color-money-yes: rgba(34, 197, 94, 0.18);
+  --color-money-no: rgba(239, 68, 68, 0.18);
+
+  /* Shadows: mais suaves no dark */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --shadow-md: 0 8px 18px -8px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 16px 40px -18px rgb(0 0 0 / 0.65);
+}
+
+/* Theme toggle button (injected by theme.js) */
+.top-nav__theme-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.top-nav__theme-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.top-nav__theme-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* When the theme button is placed beside the brand ("Analytics") */
+.top-nav__brand.top-nav__brand--with-theme {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+/* =============================
+   Dark theme: "Total" rows inside tables
+   These rows are marked by theme.js with .ce-total-row
+   ============================= */
+html[data-theme="dark"] table.data-table tfoot tr,
+html[data-theme="dark"] table.data-table tbody tr.ce-total-row,
+html[data-theme="dark"] table.data-table tbody tr.total-row {
+  background: rgba(148, 163, 184, 0.10) !important;
+}
+
+html[data-theme="dark"] table.data-table tfoot tr>*,
+html[data-theme="dark"] table.data-table tbody tr.ce-total-row>*,
+html[data-theme="dark"] table.data-table tbody tr.total-row>* {
+  background: rgba(148, 163, 184, 0.10) !important;
+}
+
+/* Keep the same background even when a generic hover rule exists */
+html[data-theme="dark"] table.data-table tbody tr.ce-total-row:hover,
+html[data-theme="dark"] table.data-table tbody tr.total-row:hover {
+  background: rgba(148, 163, 184, 0.10) !important;
+}
+
+html[data-theme="dark"] table.data-table tbody tr.ce-total-row:hover>*,
+html[data-theme="dark"] table.data-table tbody tr.total-row:hover>* {
+  background: rgba(148, 163, 184, 0.10) !important;
+}
+
+
+/* =============================
+   Dark theme: table block headers (ex.: "Lista", "Vendas", "Influencers")
+   Some pages set a light background in their page CSS, so we force it here.
+   ============================= */
+html[data-theme="dark"] .table-block {
+  background: rgba(15, 23, 42, 0.55) !important;
+  border-color: rgba(148, 163, 184, 0.20) !important;
+}
+
+html[data-theme="dark"] .table-block__header {
+  background: rgba(15, 23, 42, 0.65) !important;
+  color: var(--color-text-primary) !important;
+  border-bottom-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+html[data-theme="dark"] .table-block__header h3,
+html[data-theme="dark"] .table-block__header .table-block__icon {
+  color: var(--color-text-primary) !important;
+}
+
+/* If any page uses an inline/extra header wrapper, keep it consistent */
+html[data-theme="dark"] .table-block__meta,
+html[data-theme="dark"] .table-block__meta * {
+  color: var(--color-text-primary) !important;
+}
+
+/* Keep the header from "flashing" light on hover/focus */
+html[data-theme="dark"] .table-block__header:hover,
+html[data-theme="dark"] .table-block__header:focus-within {
+  background: rgba(15, 23, 42, 0.65) !important;
+}

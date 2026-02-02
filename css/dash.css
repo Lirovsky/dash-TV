@@ -1,0 +1,891 @@
+/* ========================================
+   CSS Variables / Design System
+   ======================================== */
+:root {
+  /* Colors */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  /* Channel Colors */
+  --color-facebook: #dbeafe;
+  --color-facebook-dark: #3b82f6;
+  --color-facebook-header: #eff6ff;
+
+  --color-google: #fef3c7;
+  --color-google-dark: #f59e0b;
+  --color-google-header: #fffbeb;
+
+  --color-organic: #f3e8ff;
+  --color-organic-dark: #a855f7;
+  --color-organic-header: #faf5ff;
+
+  --color-summary: #e8ffef;
+  --color-summary-dark: #55f768;
+  --color-summary-header: #f5fffc;
+
+  /* Status Colors */
+  --color-success: #dcfce7;
+  --color-success-dark: #22c55e;
+  --color-warning: #f50b70;
+  --color-error: #fee2e2;
+  --color-error-dark: #ef4444;
+
+  /* Money Status Colors */
+  --color-all: #f1f5f9;
+  --color-money-yes: #dcfce7;
+  --color-money-no: #fee2e2;
+
+  /* Primary */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+
+  --dash-sidebar-width: 240px;
+  /* ajuste aqui (ex: 220–260) */
+}
+
+/* ========================================
+   Dark Theme (para TV)
+   Ative com: <html data-theme="dark">
+   ======================================== */
+html[data-theme="dark"] {
+  --color-background: #0b1220;
+  --color-surface: #0f172a;
+  --color-border: #1e293b;
+  --color-border-light: #1e293b;
+
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* Ajuste leve de sombras no escuro */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.55);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.55), 0 2px 4px -2px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.pintar {
+  background-color: #22c55e;
+}
+
+/* Acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   Navbar (topo) — padrão do site
+   ======================================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.top-nav__inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 12px var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.top-nav__brand {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  letter-spacing: 0.2px;
+}
+
+.top-nav__links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Ações do header (ex.: tema escuro) */
+.top-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-nav__theme-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.top-nav__theme-btn:hover {
+  background: var(--color-background);
+}
+
+.top-nav__theme-btn:active {
+  transform: scale(0.98);
+}
+
+
+.top-nav__link {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.top-nav__link:hover {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.top-nav__link.is-active {
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--color-primary);
+}
+
+/* ========================================
+   Shell / Layout
+   ======================================== */
+.dash-shell {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: var(--dash-sidebar-width) minmax(0, 1fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.dash-main {
+  min-width: 0;
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+.dash-sidebar {
+  position: sticky;
+  top: 64px;
+  /* altura aproximada do header */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+
+  /* Filtro no topo + KPIs no rodapé */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dash-sidebar__top {
+  flex: 0 0 auto;
+}
+
+.dash-sidebar__bottom {
+  flex: 0 0 auto;
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.dash-kpi-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+}
+
+.dash-kpi-card__label {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.dash-kpi-card__value {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.dash-kpi-card--small .dash-kpi-card__value {
+  font-size: 1.35rem;
+}
+
+.dash-kpi-card--mini {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.dash-kpi-card--mini .dash-kpi-card__value {
+  font-size: 1.6rem;
+}
+
+/* ========================================
+   KPI Duo (2 métricas no mesmo card)
+   ======================================== */
+.dash-kpi-card--duo {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.dash-kpi-card--duo .dash-kpi-duo__item {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-kpi-card--duo .dash-kpi-duo__item+.dash-kpi-duo__item {
+  border-left: 1px solid var(--color-border-light);
+  margin-left: var(--spacing-md);
+  padding-left: var(--spacing-md);
+}
+
+/* mais compacto quando o card também é --mini */
+.dash-kpi-card--mini.dash-kpi-card--duo .dash-kpi-duo__item+.dash-kpi-duo__item {
+  margin-left: var(--spacing-sm);
+  padding-left: var(--spacing-sm);
+}
+
+
+/* ========================================
+   Toolbar / Date Range
+   (mesmo padrão visual do filtro das outras páginas)
+   ======================================== */
+.dash-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* O spacer existia para empurrar o filtro para a direita (ficava pequeno).
+   Aqui removemos para o filtro ocupar o topo inteiro, como nas outras páginas. */
+.dash-toolbar__spacer {
+  display: none;
+}
+
+.dash-range {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+}
+
+.dash-range__inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.dash-range__sep {
+  color: var(--color-text-muted);
+  font-weight: 700;
+  padding-bottom: 2px;
+}
+
+.dash-range__date {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  min-width: 190px;
+}
+
+.dash-range__date:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dash-range__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dash-range__btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.dash-range__btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.dash-range__btn:active {
+  transform: scale(0.98);
+}
+
+.dash-range__btn--ghost {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.dash-range__btn--ghost:hover {
+  background: var(--color-background);
+}
+
+/* ========================================
+   Date Range dentro da Sidebar
+   ======================================== */
+.dash-range--sidebar {
+  padding: var(--spacing-md);
+}
+
+.dash-range--sidebar .dash-range__inputs {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-sm);
+}
+
+/* No layout da sidebar, o separador "–" não faz sentido (inputs ficam empilhados) */
+.dash-range--sidebar .dash-range__sep {
+  display: none;
+}
+
+.dash-range--sidebar .dash-range__date {
+  width: 100%;
+  min-width: 0;
+}
+
+.dash-range--sidebar .dash-range__actions {
+  width: 100%;
+  margin-left: 0;
+  justify-content: stretch;
+}
+
+.dash-range--sidebar .dash-range__btn {
+  flex: 1;
+}
+
+/* ========================================
+   Painéis (2x2)
+   ======================================== */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.dash-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.dash-panel__header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dash-panel__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.dash-panel__body {
+  padding: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.dash-panel__chart {
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  min-height: 260px;
+}
+
+.dash-panel__chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.dash-panel__stats {
+  display: grid;
+  gap: var(--spacing-sm);
+  align-content: start;
+}
+
+.dash-stat {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.dash-stat__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dash-stat__value {
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   Tabelas (Detalhamento)
+   ======================================== */
+.dash-details {
+  margin-top: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.dash-table-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.dash-table-card__header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dash-table-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+}
+
+.dash-table-card__body {
+  overflow-x: auto;
+}
+
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+}
+
+.dash-table th,
+.dash-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: right;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.dash-table th:first-child,
+.dash-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.dash-table thead th {
+  background: var(--color-background);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dash-table tbody tr:hover {
+  background: var(--color-background);
+}
+
+.dash-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 1200px) {
+  .dash-panel__body {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-panel__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .dash-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-sidebar {
+    position: static;
+    justify-content: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-details {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-range {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .dash-range__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 560px) {
+  .dash-range__date {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .dash-range__inputs {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .dash-range__actions {
+    justify-content: stretch;
+  }
+
+  .dash-range__btn {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   Fit 4 gráficos sem scroll (desktop)
+   ======================================== */
+@media (min-width: 981px) {
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  /* Evita scroll da página inteira no desktop (layout precisa caber) */
+  body {
+    overflow: hidden;
+  }
+
+  /* Reserva altura para o header fixo */
+  .dash-shell {
+    height: calc(100vh - (var(--spacing-md) * 2));
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    align-items: stretch;
+  }
+
+  .dash-main {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Toolbar mais compacta */
+  .dash-toolbar {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .dash-range {
+    padding: var(--spacing-md);
+  }
+
+  .dash-range__date {
+    min-width: 170px;
+    padding: 8px 10px;
+  }
+
+  .dash-range__actions {
+    gap: var(--spacing-sm);
+  }
+
+  .dash-range__btn {
+    padding: 8px 14px;
+  }
+
+  /* Grid 2x2 ocupa o restante da altura */
+  .dash-grid {
+    flex: 1;
+    min-height: 0;
+    gap: var(--spacing-md);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .dash-panel {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dash-panel__header {
+    padding: 10px 14px;
+  }
+
+  .dash-panel__body {
+    flex: 1;
+    min-height: 0;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    grid-template-columns: minmax(0, 1fr) 110px;
+    align-items: stretch;
+  }
+
+  /* Chart precisa poder encolher (remover min-height fixo) */
+  .dash-panel__chart {
+    min-height: 0;
+    height: 100%;
+    padding: 10px;
+  }
+
+  .dash-panel__chart canvas {
+    height: 100% !important;
+  }
+
+  /* Stats mais compactos */
+  .dash-panel__stats {
+    gap: 6px;
+  }
+
+  .dash-stat {
+    padding: 6px 8px;
+  }
+
+  .dash-stat__label {
+    margin-bottom: 2px;
+    font-size: 0.65rem;
+  }
+
+  .dash-stat__value {
+    font-size: 0.95rem;
+  }
+
+  /* 4 KPIs no "Custo por Leads" precisam caber sem cortar */
+  .dash-panel--cpl .dash-panel__stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar mais compacta para não "estourar" altura */
+  .dash-sidebar {
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .dash-sidebar__bottom {
+    gap: var(--spacing-sm);
+  }
+
+  .dash-kpi-card {
+    padding: 10px 12px;
+  }
+
+  .dash-kpi-card__label {
+    margin-bottom: 4px;
+  }
+
+  .dash-kpi-card__value {
+    font-size: 1.35rem;
+  }
+
+  .dash-kpi-card--small .dash-kpi-card__value {
+    font-size: 1.2rem;
+  }
+}
+
+/* Caso a altura do monitor seja menor, comprime ainda mais */
+@media (min-width: 981px) and (max-height: 860px) {
+  .dash-shell {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    height: calc(100vh - 64px);
+  }
+
+  .dash-range {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .dash-toolbar {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .dash-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .dash-panel__header {
+    padding: 8px 12px;
+  }
+
+  .dash-panel__body {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    grid-template-columns: minmax(0, 1fr) 110px;
+  }
+
+  .dash-panel__chart {
+    padding: 8px;
+  }
+
+  .dash-stat {
+    padding: 7px 9px;
+  }
+
+  .dash-kpi-card__value {
+    font-size: 1.25rem;
+  }
+}
+
+/* DASH sem navbar: centraliza o layout na tela */
+html[data-page="dash"] body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* centraliza vertical */
+  justify-content: center;
+  /* centraliza horizontal */
+  padding: var(--spacing-md);
+}
+
+/* deixa o container ocupar a largura e ter altura "natural" */
+html[data-page="dash"] .dash-shell {
+  width: 100%;
+  margin: 0;
+}
