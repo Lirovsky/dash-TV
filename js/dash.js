@@ -635,6 +635,9 @@
     initializeDates();
     setupEventListeners();
     sendDatesToN8n();
+    setInterval(() => {
+      sendDatesToN8n();
+    }, 5 * 60 * 1000);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
