@@ -156,6 +156,9 @@
     cacMonth: $id("cac-month"),
     cacRange: $id("cac-range"),
 
+    avgTicketAnnual: $id("avg-ticket-annual"),
+    avgTicketMonthly: $id("avg-ticket-monthly"),
+
     investmentCanvas: $id("investmentChart"),
     invMeta: $id("inv-meta"),
     invGoogle: $id("inv-google"),
@@ -253,6 +256,18 @@
     return [];
   }
 
+
+  // =========================================================
+  // Money KPI formatter (tolerant to centavos payloads)
+  // - If value is very large (>= 100000) and MONEY_IS_CENTS=true, treat as cents.
+  //   Example: 365214 -> R$ 3.652,14
+  // =========================================================
+  function formatMoneyMaybeCents(value, centsThreshold = 100000) {
+    const n = utils.toNumber(value);
+    if (CONFIG.MONEY_IS_CENTS && n >= centsThreshold) return utils.formatBRL(n / 100);
+    return utils.formatBRL(n);
+  }
+
   function renderKpis(res) {
     const first = getFirstResultObject(res);
     if (!first) return;
@@ -262,6 +277,10 @@
     if (el.cacDay) el.cacDay.textContent = utils.formatBRL(kpis.cac_diario);
     if (el.cacMonth) el.cacMonth.textContent = utils.formatBRL(kpis.cac_mes);
     if (el.cacRange) el.cacRange.textContent = utils.formatBRL(kpis.cac_range);
+
+
+    if (el.avgTicketAnnual) el.avgTicketAnnual.textContent = formatMoneyMaybeCents(kpis.avg_ticket_annual);
+    if (el.avgTicketMonthly) el.avgTicketMonthly.textContent = formatMoneyMaybeCents(kpis.avg_ticket_monthly);
 
     const subs = (Array.isArray(first.subscribers) ? first.subscribers : [])[0] || {};
     if (el.kpiSubscribers) el.kpiSubscribers.textContent = utils.formatInt(subs.total_subscribers);
