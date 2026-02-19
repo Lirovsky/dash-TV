@@ -373,12 +373,21 @@
           datalabels: baseDataLabelsOptions({ datasetOffset: true }),
         },
         layout: {
-          padding: { top: 18 },
+          padding: { top: 18, right: 26, left: 6 },
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { callback: (v) => utils.formatBRL(v) } },
+          y: {
+            beginAtZero: true,
+            grace: "12%",
+            ticks: {
+              padding: 10,
+              callback: (v) => utils.formatBRL0(v),
+            },
+          },
+
         },
+
       },
     });
   }
@@ -473,11 +482,12 @@
           datalabels: baseDataLabelsOptions(),
         },
         layout: {
-          padding: { top: 18 },
+          padding: { top: 18, right: 26, left: 6 },
         },
+
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { callback: (v) => utils.formatInt(v) } },
+          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatInt(v) } },
         },
       },
     });
@@ -531,7 +541,7 @@
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { callback: (v) => utils.formatInt(v) } },
+          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatInt(v) } },
         },
       },
     });
@@ -593,7 +603,7 @@
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { callback: (v) => utils.formatBRL(v) } },
+          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatBRL(v) } },
         },
       },
     });
