@@ -364,7 +364,7 @@
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         plugins: {
-          legend: { display: true, position: "bottom" },
+          legend: { display: false, position: "bottom" },
           tooltip: {
             callbacks: {
               label: (ctx) => `${ctx.dataset.label}: ${utils.formatBRL(ctx.parsed?.y)}`,
@@ -373,17 +373,14 @@
           datalabels: baseDataLabelsOptions({ datasetOffset: true }),
         },
         layout: {
-          padding: { top: 18, right: 26, left: 6 },
+          padding: { top: 18, right: 26, left: 0 },
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
           y: {
+            display: false,
             beginAtZero: true,
             grace: "12%",
-            ticks: {
-              padding: 10,
-              callback: (v) => utils.formatBRL0(v),
-            },
           },
 
         },
@@ -473,7 +470,7 @@
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         plugins: {
-          legend: { display: true, position: "bottom" },
+          legend: { display: false, position: "bottom" },
           tooltip: {
             callbacks: {
               label: (ctx) => `Leads: ${utils.formatInt(ctx.parsed?.y)}`,
@@ -482,12 +479,12 @@
           datalabels: baseDataLabelsOptions(),
         },
         layout: {
-          padding: { top: 18, right: 26, left: 6 },
+          padding: { top: 18, right: 26, left: 0 },
         },
 
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatInt(v) } },
+          y: { display: false, beginAtZero: true, grace: "12%" },
         },
       },
     });
@@ -528,7 +525,7 @@
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         plugins: {
-          legend: { display: true, position: "bottom" },
+          legend: { display: false, position: "bottom" },
           tooltip: {
             callbacks: {
               label: (ctx) => `Vendas: ${utils.formatInt(ctx.parsed?.y)}`,
@@ -537,11 +534,11 @@
           datalabels: baseDataLabelsOptions(),
         },
         layout: {
-          padding: { top: 18 },
+          padding: { top: 18, right: 26, left: 0 },
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatInt(v) } },
+          y: { display: false, beginAtZero: true, grace: "12%" },
         },
       },
     });
@@ -590,7 +587,7 @@
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         plugins: {
-          legend: { display: true, position: "bottom" },
+          legend: { display: false, position: "bottom" },
           tooltip: {
             callbacks: {
               label: (ctx) => `CPL: ${utils.formatBRL(ctx.parsed?.y)}`,
@@ -599,11 +596,11 @@
           datalabels: baseDataLabelsOptions(),
         },
         layout: {
-          padding: { top: 18 },
+          padding: { top: 18, right: 26, left: 0 },
         },
         scales: {
           x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true } },
-          y: { beginAtZero: true, grace: "12%", ticks: { padding: 10, callback: (v) => utils.formatBRL(v) } },
+          y: { display: false, beginAtZero: true, grace: "12%" },
         },
       },
     });
