@@ -3,7 +3,7 @@
   if (page !== "dash") return;
 
   const CONFIG = {
-    DASH_ENDPOINT: "https://n8n.clinicaexperts.com.br/webhook/dash",
+    DASH_ENDPOINT: "https://n8n.clinicaexperts.com.br/webhook/new-dash",
     MONEY_IS_CENTS: true,
   };
 
