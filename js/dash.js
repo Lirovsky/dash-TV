@@ -212,7 +212,6 @@
       Object.entries(paramsObj || {}).forEach(([k, v]) => {
         if (v !== null && v !== undefined && String(v).trim() !== "") params.set(k, v);
       });
-      params.set("_ts", Date.now());
       return `${base}?${params.toString()}`;
     },
     async fetchDash(paramsObj, signal) {
@@ -663,7 +662,7 @@
     sendDatesToN8n();
     setInterval(() => {
       sendDatesToN8n();
-    }, 5 * 60 * 1000);
+    }, 20 * 60 * 1000);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
